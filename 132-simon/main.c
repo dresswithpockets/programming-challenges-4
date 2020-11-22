@@ -137,12 +137,13 @@ int main() {
 #endif
                         if (!game.players_move) {
                             int next = (int)((rand() % 40) / 10.0f);
-                            if (vector_size(game.sequence) >= 4) {
+                            vec_size_t size = vector_size(game.sequence);
+                            if (size >= 4) {
                                 int group;
                                 do {
                                     next = (int)((rand() % 40) / 10.0f);
                                     group = 0;
-                                    for (vec_size_t i = vector_size(game.sequence) - 1; i--; i >= vector_size(game.sequence) - 4) {
+                                    for (vec_size_t i = size - 4; i < size; i++) {
                                         if (game.sequence[i] == next) group++;
                                     }
                                 } while (group >= 2);
