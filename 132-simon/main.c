@@ -126,7 +126,9 @@ int main() {
                 break;
             case SmShowPressed:
                 if (game.timer == 0) {
+#if DEBUG
                     printf("players_move: %d, index: %d, turn: %d\n", game.players_move, game.index, turn);
+#endif
                     game.timer = space_duration;
 
                     if (game.index == turn) {
