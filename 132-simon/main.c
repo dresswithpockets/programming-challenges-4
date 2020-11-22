@@ -131,8 +131,10 @@ int main() {
 
                     if (game.index == turn) {
                         game.players_move = !game.players_move;
+#if DEBUG
                         vector_free(pressed_sequence);
                         pressed_sequence = vector_create();
+#endif
                         if (!game.players_move) {
                             int next = (int)((rand() % 40) / 10.0f);
                             if (vector_size(game.sequence) >= 4) {
@@ -174,9 +176,10 @@ int main() {
                     game.timer = 0;
                     game.index = 0;
                     game.players_move = false;
-
+#if DEBUG
                     vector_free(pressed_sequence);
                     pressed_sequence = vector_create();
+#endif
                     continue;
                 } else if (IsKeyDown(KEY_ESCAPE)) {
                     CloseWindow();
@@ -210,8 +213,10 @@ int main() {
                             game.players_move = false;
                         }
                         game.index = 0;
+#if DEBUG
                         vector_free(pressed_sequence);
                         pressed_sequence = vector_create();
+#endif
                     }
                     else {
                         game.index++;
@@ -314,7 +319,9 @@ int main() {
     }
 
     vector_free(game.sequence);
+#if DEBUG
     vector_free(pressed_sequence);
+#endif
 
     CloseAudioDevice();
 
